@@ -1,0 +1,16 @@
+	'Public Function Dissql(ByVal strSql As String) As SqlDataReader
+        '    Dim myConnection As SqlConnection = New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+        '    myConnection.Open()
+        '    Dim myCommand As SqlCommand = New SqlCommand(StrSql, myConnection)
+        '    Dim result As SqlDataReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection)
+        '    Return result
+        'End Function
+
+1.	Public Function GetFieldVal(ByVal strSql As String,FName as string) As string
+	-Function to get a specific field value based on query	
+
+2.	Public Function ExeDataReader(ByVal strSql As String) As SqlDataReader
+        -Function that return a set of data reader based on query
+
+3. 	ExecuteNonQuery(ByVal SQL As String)
+	-Execute SQL Command

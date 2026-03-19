@@ -1,0 +1,12 @@
+
+1.	8:15 AM 15/03/04	
+	-Enabled or disabled all the controls in FECN3
+
+2.	ProcShowAllowEditControls	
+	-Enabled or disabled all the controls that allows to edit during add new or edit.
+
+3.	ProcShowExistingFECNItem(SqlQuery as string)
+	-Show Existing FECN Item.
+
+4.	GetPartNo(StatementStr as string,SearchFor as string) as String
+	-Return Part No from string (Part + Part Spec)
