@@ -1,0 +1,643 @@
+BODY
+{
+}
+
+/* */
+.HomeHead
+{
+    color: #999966;
+    font-family: Verdana, Arial;
+    font-size: 20px;
+    font-weight: bold;
+    HEIGHT: 35px
+}
+
+/* */
+.ContentHead
+{
+    background-color: #dddca3;
+    color: dimgray;
+    font-family: Verdana, Arial;
+    font-size: 20px;
+    font-weight: bold;
+    height: 35px
+}
+
+/* */
+.SubContentHead
+{
+    background-color: #dddca3;
+    color: dimgray;
+    font-family: Verdana, Arial;
+    font-size: 18px;
+    font-weight: bold;
+    height: 20px
+}
+
+TD.SideTableHeading
+{
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff
+}
+
+/* */
+.UnitCost
+{
+    color: #808080;
+    font-family: Verdana, Arial;
+    font-size: 15px;
+    line-height: 20pt
+}
+
+/* */
+.ModelNumber
+{
+    color: #808080;
+    font-family: Verdana, Arial;
+    font-size: 11px;
+    line-height: 20pt
+}
+
+.LabelReqField
+{
+    color: red;
+    font-family: Verdana, Arial;
+    font-size: 12px;
+    line-height: 20pt
+}
+
+.FormDesc
+{
+    Color: White;
+    background-Color: Olive;
+    font-family: Verdana;
+    font-size: 20px;
+    line-height: 20pt
+}
+
+.SubTableDesc
+{
+    Color: White;
+    background-Color: #00C0C0;
+    font-family: Verdana;
+    font-size: 20px;
+    line-height: 20pt
+}
+
+.Instruction
+{
+    color: DarkGreen;
+    font-family: Verdana;
+    font-size: 20px;
+    line-height: 20pt
+}
+
+.LabelNormal1
+{
+    color: black;
+    font-family: Verdana;
+    font-size: 10px;
+    line-height: 20pt
+    font-weight: bold;
+}
+
+
+.ErrorText
+{
+    color: red;
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 14pt
+}
+
+
+.MainPart
+{
+
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 14pt
+}
+
+.AltPart
+{
+    color: Blue;
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 14pt
+}
+
+
+.Legend
+{
+    color: Green;
+    font-family: Verdana, Arial;
+    font-size: 16px;
+    line-height: 20pt
+}
+
+.PartWithoutSourceLabel
+{
+    color: red;
+    font-family: Verdana, Arial;
+    font-size: 24px;
+    line-height: 20pt
+}
+
+.RemarksNormal
+{
+    color: DarkBlue;
+    font-family: Verdana, Arial;
+    font-size: 16px;
+}
+
+.PartWithSourceLabel
+{
+    color: Blue;
+    font-family: Verdana, Arial;
+    font-size: 24px;
+    line-height: 20pt
+}
+
+.Listlabel
+{
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+}
+
+.ListOutput
+{
+    color: DarkBlue;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+}
+
+
+OutputText
+{
+    color: DarkBlue;
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+.ReqText
+{
+    background-color: #FFE0C0;
+    color: DarkBlue;
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+
+
+
+.PRExpired
+{
+	color: blue;
+}
+
+.PartSource
+{
+    background-color: yellow;
+	color: red;
+    font-size: 11px;
+}
+
+.Urgent
+{
+    background-color: red;
+	color: white;
+    font-size: 11px;
+}
+
+.BOMQuoteMainPart
+{
+    background-color: #80FF80;
+	color: Black;
+    font-size: 11px;
+}
+
+.HighlightItem
+{
+
+	color: blue;
+    font-size: 11px;
+}
+
+
+.WithoutStdCost
+{
+    background-color: Green;
+	color: white;
+    font-size: 11px;
+}
+
+.MostPopularHead
+{
+    background-color: darkred;
+    color: white;
+    font-family: Verdana, Arial;
+    font-size: 11px;
+    font-weight: bold
+}
+
+A.MostPopularItemText, A.MostPopularItemText:link, A.MostPopularItemText:visited
+{
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 11px;
+    text-decoration: none
+}
+
+A.MostPopularItemText:hover
+{
+    color: red;
+    font-family: Verdana, Arial;
+    font-size: 11px;
+    text-decoration: underline
+}
+
+.ProductListHead
+{
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14pt;
+    text-decoration: underline;
+}
+.ProductListItem
+{
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 10px
+}
+
+.GridHeader
+{
+    background-color: #dddca3;
+    border-bottom: dimgray;
+    border-left: dimgray 1px solid;
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20pt;
+    padding-left: 5px
+}
+
+.GridHeaderSmall
+{
+    background-color: #dddca3;
+    border-bottom: dimgray;
+    border-left: dimgray 1px solid;
+    color: black;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    line-height: 10pt;
+    padding-left: 5px
+}
+
+.GridItem
+{
+    background-color: #ffffff;
+    border-bottom: dimgray;
+    border-left: dimgray 1px solid;
+    color: black;
+    font-family: Verdana;
+    font-size: 10px;
+    padding-left: 5px
+}
+
+.GridItemAlt
+{
+    background-color: #f2f2f2;
+    border-bottom: dimgray;
+    border-left: dimgray 1px solid;
+    color: black;
+    font-family: Verdana;
+    font-size: 10px;
+    padding-left: 5px
+}
+
+.GridFooter
+{
+    background-color: #dddca3;
+    line-height: 10pt
+}
+
+/* text style for the links */
+A.SiteLink, A.SiteLink:link, A.SiteLink:visited
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    text-decoration: none;
+    color: #dddddd;
+    font-size: 11px;
+}
+
+A.SiteLink:hover
+{
+    text-decoration: underline;
+    color: white;
+}
+
+A.SiteLinkBold, A.SiteLinkBold:link, A.SiteLinkBold:visited
+{
+    color: #dddddd;
+    font-family: Verdana, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size:  11px;
+    font-weight: bold
+}
+
+A.SiteLinkBold:hover
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* */
+A.MenuUnselected, A.MenuUnselected:link, A.MenuUnselected:visited
+{
+    color: white;
+    font-family: Verdana, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size:  12px;
+    font-weight: bold;
+    line-height: 16px;
+    padding-left: 10px
+}
+
+A.MenuUnselected:hover
+{
+    color: white;
+    text-decoration: underline;
+    padding-left: 10px
+}
+
+A.MenuSelected
+{
+    color: white;
+    font-family: Verdana, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size:  12px;
+    font-weight: bold;
+    line-height: 16px;
+    padding-left: 10px
+}
+
+A.MenuSelected:hover
+{
+    color: white;
+    font-family: Verdana, Helvetica, sans-serif;
+    text-decoration: none;
+    padding-left: 10px
+}
+
+/* GENERAL */
+
+/* text style used for most text rendered by modules */
+.Normal
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 12px
+}
+
+.NormalDouble
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 20px
+}
+
+/* text style used for textboxes in the admin pages, for Nav compatibility */
+.NormalTextBox
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+/* text style used for selects in the admin pages, for Nav compatibility */
+.NormalSelect
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+/* text style used for textboxes in the edit pages, for Nav compatibility */
+.EditTextBox
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #999966;
+    width: 100%;
+}
+
+/* text style used for controls in the admin and edit pages, for Nav compatibility */
+.NormalControl
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+/* text style used for checkboxes in the admin and edit pages, for Nav compatibility */
+.NormalCheckBox
+{
+    margin-left: -4px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+/* text style used for checkboxes in the admin and edit pages, for Nav compatibility */
+.NormalRadio
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-indent: -5px;
+}
+
+/* text style used for checkboxes in the admin and edit pages, for Nav compatibility */
+.NormalButton
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-indent: -5px;
+/*    border-style: solid;
+    border-width: 1px;
+    border-color: #cccc99; */
+    background-color:#ccccaa;
+}
+
+.NormalRed
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: red
+}
+
+.NormalBold
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 12px
+}
+
+.NormalItalic
+{
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 16px
+}
+
+
+
+A:link  {
+    text-decoration: underline;
+    color:  black;
+}
+
+A, A:hover {
+    text-decoration: underline;
+    color:  black;
+}
+
+SMALL   {
+    font-size:  8px;
+}
+
+BIG {
+    font-size:  14px;
+}
+
+BLOCKQUOTE, PRE {
+    font-family:    Lucida Console, monospace;
+}
+
+
+UL LI   {
+    list-style-type:    square ;
+}
+
+UL LI LI    {
+    list-style-type:    disc;
+}
+
+UL LI LI LI {
+    list-style-type:    circle;
+}
+
+OL LI   {
+    list-style-type:    decimal;
+}
+
+OL OL LI    {
+    list-style-type:    lower-alpha;
+}
+
+OL OL OL LI {
+    list-style-type:    lower-roman;
+}
+
+HR {
+    height:1pt;
+    text-align:left
+}
+
+BODY1
+{
+
+/* */
+	padding-right: 0px;
+  padding-left: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+	background-color: #edecd1;
+}
+
+#dek {POSITION:absolute;VISIBILITY:hidden;Z-INDEX:200;}
+
+.LeadTime
+{
+    background-color: Pink;
+    color: red;
+}
+
+.Variance
+{
+    background-color: black;
+	color: white;
+}
+
+.IssuingListAltPart
+{
+    color: red;
+    font-family: Verdana;
+    font-size: 10px;
+    line-height: 14pt
+}
+
+.IssuingListMainPart
+{
+    color: Blue;
+    font-family: Verdana;
+    font-size: 12px;
+    line-height: 14pt
+}
+
+.SectionHeader
+{
+    Color: White;
+    background-Color: #8080FF;
+    font-family: Comic Sans MS;
+    font-size: 16px;
+    line-height: 20pt
+}
+
+.sideboxnotop {
+	BORDER-RIGHT: #8080FF 1px solid;
+    BORDER-LEFT: #8080FF 1px solid;
+    BORDER-BOTTOM: #8080FF 1px solid
+}
+
+.sideboxnotop1 {
+	BORDER-RIGHT: #999999 1px solid;
+    BORDER-LEFT: #999999 1px solid;
+    BORDER-BOTTOM: #999999 1px solid
+}
+
+.input_box
+{
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BORDER-LEFT: #000000 1px solid; COLOR: #000000; LINE-HEIGHT: 13px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: Arial, Verdana, Sans-Serif; BACKGROUND-COLOR: #f1f1f1
+}
+
+.submit_button_bkp
+{
+	BORDER-TOP-WIDTH: thin; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: thin; FONT-SIZE: xx-small; BORDER-BOTTOM-WIDTH: thin; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Sans-Serif; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: thin
+}
+
+.submit_button
+{
+	FONT-WEIGHT: bold; FONT-SIZE: xx-small; FONT-FAMILY: Arial, Verdana, Sans-Serif
+}
+
+.sideboxnotopGrey {
+	BORDER-RIGHT: lightgrey 1px solid;
+    BORDER-LEFT: lightgrey 1px solid;
+    BORDER-BOTTOM: lightgrey 1px solid
+}
