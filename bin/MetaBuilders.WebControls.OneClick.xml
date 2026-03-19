@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MetaBuilders.WebControls.OneClick</name>
+    </assembly>
+    <members>
+        <member name="T:MetaBuilders.WebControls.OneClick">
+            <summary>
+            The OneClick control allows a page developer to determine if the user has submitted a form more than once
+            without waiting for the first submision to complete.
+            </summary>
+            <remarks>
+            <p>The common use for this control is to check if a user has clicked a button more than once,
+            while the page was still processing the first click event. This can be a problem if the click
+            handler causes a database write to occur, or some similar process that is problematic to
+            have happen twice.</p>
+            <p>
+            The OneClick control is designed to allow the same form to be subitted twice, 
+            as long as the original request is allowed to complete.
+            </p>
+            </remarks>
+            <example>
+            The following example shows a OneClick control used on a page.
+            <code>
+            &lt;%@ Register tagprefix="mboc" namespace="MetaBuilders.WebControls" assembly="MetaBuilders.WebControls.OneClick" %&gt;
+            &lt;script runat="server" language="c#" &gt;
+             protected void Button1_Click( Object sender, EventArgs e ) {
+            	if ( OneClick1.IsValid ) {
+            		// Code here is important to happen only once, and might take substantial amounts of time to complete
+            		// For example purposes, the thread will be put to sleep for 3 seconds.
+            		System.Threading.Thread.Sleep( TimeSpan.FromSeconds(3) );
+            	}
+            }
+            &lt;/script&gt;
+            &lt;html&gt;&lt;body&gt;&lt;form runat="server" &gt;
+            	&lt;mboc:OneClick runat="server" Id="OneClick1" /&gt;
+            	&lt;asp:Button runat="server" OnClick="Button1_Click" Text="Do Something Important" /&gt;
+            &lt;/form&gt;&lt;/body&gt;&lt;/html&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:MetaBuilders.WebControls.OneClick.OnInit(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Web.UI.Control.OnInit(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:MetaBuilders.WebControls.OneClick.CreateControlCollection">
+            <summary>
+            Overrides <see cref="M:System.Web.UI.Control.CreateControlCollection"/>.
+            </summary>
+        </member>
+        <member name="M:MetaBuilders.WebControls.OneClick.OnPreRender(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Web.UI.Control.OnPreRender(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:MetaBuilders.WebControls.OneClick.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Overrides <see cref="M:System.Web.UI.Control.Render(System.Web.UI.HtmlTextWriter)"/>.
+            </summary>
+        </member>
+        <member name="P:MetaBuilders.WebControls.OneClick.IsValid">
+            <summary>
+            Gets a value indicating whether the user has only submitted the form once per form life cycle.
+            </summary>
+            <value>
+            true if the user only submitted the form once, false if more submitals were received.
+            </value>
+        </member>
+        <member name="T:MetaBuilders.WebControls.OneClickDesigner">
+            <summary>
+            Simple designer for <see cref="T:MetaBuilders.WebControls.OneClick"/> which shows a placeholder.
+            </summary>
+        </member>
+        <member name="M:MetaBuilders.WebControls.OneClickDesigner.GetDesignTimeHtml">
+            <summary>
+            Overridden to use <see cref="M:System.Web.UI.Design.ControlDesigner.CreatePlaceHolderDesignTimeHtml"/>.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

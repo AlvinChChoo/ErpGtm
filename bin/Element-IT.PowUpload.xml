@@ -1,0 +1,628 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Element-IT.PowUpload</name>
+    </assembly>
+    <members>
+        <member name="T:ElementIT.PowUpload.License">
+            <summary>
+            Static class provides access to a PowUpload component license.
+            </summary>
+            <remarks>
+            Provides details of a component license type, a serial key and a number of days remaining. 
+            This class allows to set or get serial key and get number of days remaining.
+            </remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.License.LicenseType">
+            <summary>Gets a string representation of the component license state.
+            </summary>
+            <value>Component license state string.</value>
+            <remarks>Returns "Full License" with the serial key number if the correct 
+            key has set 
+            in <b>serialKey</b> attribute of the Web.config file or in 
+            the <see cref="P:ElementIT.PowUpload.License.SerialKey">SerialKey</see> property.<br/>
+            Returns "Free for personal use only" in other cases.       
+            <para>Examples: <para><c>Free for personal use only</c></para>
+            <para><c>Full License. Serial key: xxxxxxxxxxxx</c></para></para>
+            </remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.License.SerialKey">
+            <summary>Gets or sets the serial key of the PowUpload component.
+            </summary>
+            <value>A string representing the serial key.</value>
+            <remarks>
+            This property must be set before any use of the component. It can be done at the .aspx page with
+            the POST Form or at the Global.asax file. 
+            <para>Use this proprty to set the serial key in code. It can be usefull if you can't or don't wish
+            to set the key in the <b>serialKey</b> attribute of the Web.config file.</para>
+            </remarks>
+        </member>
+        <member name="T:ElementIT.PowUpload.Progress">
+            <summary>Allows to monitor the progress of the files upload.
+            </summary>
+        </member>
+        <member name="M:ElementIT.PowUpload.Progress.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <b>Progress</b> object with specified ID.
+            </summary>
+            <param name="id">A string representing ID of the corresponding upload process.</param>
+            <remarks>The ID parameter is used to bind the <b>Progress</b> object with the upload process.</remarks>		
+            <seealso cref="M:ElementIT.PowUpload.Upload.#ctor">Upload class constructor</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.Progress.CancelUpload(System.Boolean,System.Boolean)">
+            <summary>
+             Stops upload, terminates the connection with the client if demanded and 
+             deletes all files uploaded if demanded. 
+            </summary>
+            <param name="closeConnection">Set to <b>true</b> if request should be terminated; otherwise, <b>false</b>.</param>
+            <param name="deleteFiles">Set to <b>true</b> if the uploaded files should be deleted; otherwise, <b>false</b>.</param>
+        </member>
+        <member name="M:ElementIT.PowUpload.Progress.CancelUpload(System.Boolean)">
+            <summary>
+              Stops upload and if specified terminates the connection with the client.
+            </summary>
+            <param name="closeConnection">Set to <b>true</b> if request should be terminated; otherwise, <b>false</b>.</param>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.id">
+            <summary>
+             Gets or sets ID to bind the <b>Progress</b> object with the upload process.
+            </summary>
+            <value>The ID of the <b>Progress</b> object instanse.</value>
+            <remarks>The same as ID parameter passed to constructor.</remarks>
+            <seealso cref="M:ElementIT.PowUpload.Upload.#ctor">Upload class constructor</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.BytesPerSecondAverage">
+            <summary>
+             Gets the average data transfer rate for the upload in bytes per second.
+            </summary>
+            <value>The average data transfer rate in bytes per second.</value>
+            <remarks>Value determined by the following formula: <c>UploadedBytes/SecondsDone</c></remarks>	
+            <seealso cref="P:ElementIT.PowUpload.Progress.BytesPerSecondCurrent">BytesPerSecondCurrent property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.BytesPerSecondCurrent">
+            <summary>
+             Gets the current data transfer rate for the upload in bytes per second.
+            </summary>
+            <value>The current data transfer rate in bytes per second.</value>
+            <remarks>Returns transfer rate for the last data chunk uploaded. 
+            <para>This value varies a lot depending on the server load degree and the Internet connection rate.
+            This is the <b>current</b> transfer rate. Use 
+            <see cref="P:ElementIT.PowUpload.Progress.BytesPerSecondAverage">BytesPerSecondAverage</see> property to get an 
+            average transfer rate.  
+            </para></remarks>	
+            <seealso cref="P:ElementIT.PowUpload.Progress.BytesPerSecondAverage">BytesPerSecondAverage property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.SecondsLeftCurrent">
+            <summary>
+            Gets the estimated number of seconds left to complete upload.
+            </summary>
+            <value>The estimated number of seconds left.</value>
+            <remarks>This value is based on the current transfer rate. So it varies a lot with time. 
+            <para>Use 
+            <see cref="P:ElementIT.PowUpload.Progress.SecondsLeftAverage">SecondsLeftAverage</see> property to get 
+            more probable number of seconds left.</para></remarks>	
+            <seealso cref="P:ElementIT.PowUpload.Progress.SecondsLeftAverage">SecondsLeftAverage property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.SecondsLeftAverage">
+            <summary>
+            Gets the estimated number of seconds left to complete upload.
+            </summary>
+            <value>The estimated number of seconds left.</value>
+            <remarks>This value is based on the average transfer rate. This value is more stable than 
+            <see cref="P:ElementIT.PowUpload.Progress.SecondsLeftCurrent">SecondsLeftCurrent</see> property.
+            </remarks>	
+            <seealso cref="P:ElementIT.PowUpload.Progress.SecondsLeftCurrent">SecondsLeftCurrent property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.SecondsDone">
+            <summary>
+             Gets the number of seconds elapsed since the upload start.
+            </summary>
+            <value>The number of seconds elapsed since the upload start.</value>
+            <seealso cref="P:ElementIT.PowUpload.Progress.SecondsLeftAverage">SecondsLeftAverage property</seealso>
+            <seealso cref="P:ElementIT.PowUpload.Progress.SecondsLeftCurrent">SecondsLeftCurrent property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.PercentDone">
+            <summary>
+            Gets the percentage of the upload transfer is completed.
+            </summary>
+            <value>Percentage of the upload process is completed.</value>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.TotalBytes">
+            <summary>
+            Gets the total size of the HTTP POST request.
+            </summary>
+            <value>Total size of the HTTP POST request in bytes.</value>
+            <remarks>HTTP POST request includes files content, files names and other ancillary data. 
+            So HTTP POST request size is greater than total files size.</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.UploadStatus">
+            <summary>
+             Gets the current upload status.
+            </summary>
+            <value>The <see cref="T:ElementIT.PowUpload.UploadState">UploadState</see> of the upload.</value>
+            <remarks>See <see cref="T:ElementIT.PowUpload.UploadState">UploadState</see> for details.
+            </remarks>
+            <seealso cref="T:ElementIT.PowUpload.UploadState">UploadState enumeration</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.UploadedFilesCount">
+            <summary>
+             Gets completely uploaded files count.
+            </summary>
+            <value>The number of completely uploaded files.</value>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.CurrentFileName">
+            <summary>
+             Gets the name of the currently uploading file.
+            </summary>
+            <value>A string that represents name of the currently uploading file.</value>
+            <remarks>Returns path of the file on the client's computer.</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.CurrentFileUploadedBytes">
+            <summary>
+             Gets the number of bytes of the currently uploading file that have been received by the server.
+            </summary>
+            <value>The number of bytes of the currently uploading file that have been received by the server.</value>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.UploadComplete">
+            <summary>
+             Gets a value that indicates whether data transfer is complete.
+            </summary>
+            <value><b>true</b> if data transfer has finished; otherwise, <b>false</b>.</value>	
+            <seealso cref="P:ElementIT.PowUpload.Progress.UploadStatus">UploadStatus property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.UploadedBytes">
+            <summary>
+             Gets the number of bytes that have been received by the server.
+            </summary>
+            <value>The number of bytes that have been received by the server.</value>
+        </member>
+        <member name="P:ElementIT.PowUpload.Progress.UploadStatusString">
+            <summary>
+             Returns a string representation of the current upload status.
+            </summary>
+            <value>A string that represents status of the upload.</value>
+            <remarks>Use this property to show upload status for user.</remarks>
+            <example><code>Progress progr = new Progress(Request.QueryString["uploadID"]);	
+            <br/>Response.Write (“Upload status: ” + progr.UploadStatusString);</code></example>
+            <seealso cref="P:ElementIT.PowUpload.Progress.UploadStatus">UploadStatus property</seealso>
+        </member>
+        <member name="T:ElementIT.PowUpload.UploadState">
+            <summary>
+             Specifies the available Upload process states.
+            </summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Waiting">
+            <summary>Initial state. The Upload process with the same ID as 
+            specified in the <see cref="M:ElementIT.PowUpload.Upload.#ctor">constructor</see> hasn't started.</summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Uploading">
+            <summary>Upload process is in progress.</summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Complete">
+            <summary>Upload process has completed.</summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Error">
+            <summary>An error occurs while the Upload process.</summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Cancelled">
+            <summary>The Upload process cancelled by the user or by 
+            the <see cref="M:ElementIT.PowUpload.Progress.CancelUpload(System.Boolean,System.Boolean)">Progress.CancelUpload</see> method.</summary>
+        </member>
+        <member name="F:ElementIT.PowUpload.UploadState.Rejected">
+            <summary>The Upload process was rejected due to the POST 
+            request size exceeds the maximum or minimum allowed value.</summary>
+        </member>
+        <member name="T:ElementIT.PowUpload.Upload">
+            <summary>
+            Gives access to the files contained in an HTTP POST request.
+            </summary>
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.IsUploadInitialized">
+            <summary>
+            Returns a value indicating whether the Upload process with the ID equals to 
+            the hash code of the current Request was initialized.
+            </summary>
+            <returns><b>true</b> if Upload process was initialized; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.IsUploadInitialized(System.String)">
+            <summary>
+            Returns a value indicating whether the Upload process with the specified ID was initialized.
+            </summary>
+            <param name="id">Unique identifier of the upload process.</param>	
+            <returns><b>true</b> if Upload process was initialized; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.#ctor">
+            <overloads>
+            <summary>
+             Initializes a new instance of the <b>Upload</b> class.
+            </summary>
+            </overloads>	
+            <summary>
+             Initializes a new instance of the <b>Upload</b> class with the ID 
+             equals to the hash code of the current <see cref="T:System.Web.HttpRequest">Request</see>.
+            </summary>
+            <remarks>
+            Multiple users can upload files at the same time. 
+            A <see cref="T:System.Web.SessionState.HttpSessionState">Session</see> object that can help to distinguish users uploading files 
+            is inaccessible.
+            To identify upload processes and to associate them with the corresponding 
+            <see cref="T:ElementIT.PowUpload.Progress">Progress</see> objects unique identifiers (ID) are used. The <b>Upload</b> class has 
+            two constructors. They differ in a way the ID is received. <para>This constructor 
+            has no parameters. It uses HashCode of the current <see cref="T:System.Web.HttpRequest">Request</see> object 
+            as an ID. The <see cref="T:System.Web.HttpRequest">Request</see> object received by an Upload module from an user 
+            page request is the same as the one in the page there <b>Upload</b> object creating. 
+            That is why HashCode is the same.</para>
+            </remarks>	
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <b>Upload</b> class with specified ID.
+            </summary>
+            <param name="id">Unique identifier of the upload process.</param>
+            <remarks>
+            Multiple users can upload files at the same time. 
+            A <see cref="T:System.Web.SessionState.HttpSessionState">Session</see> object that can help to distinguish users uploading files 
+            is inaccessible.
+            To identify upload processes and to associate them with the corresponding 
+            <see cref="T:ElementIT.PowUpload.Progress">Progress</see> objects unique identifiers (ID) are used. The <b>Upload</b> class has 
+            two constructors. They differ in a way the ID is received.
+            <para>This constructor must get an ID. 
+            Query string field with ID of the upload process should be passed 
+            to the file that processing Form and to the Progress bar page.  
+            An "Action" parameter of the Form should be set to a string 
+            like "&lt;file name&gt;?UploadID=xxxxx" (for example, 
+            Action="processupload.aspx?UploadID=123456789"). 
+            The same ID should be added to the Progress bar page name 
+            (for example, "progress.aspx?UploadID=123456789").</para>
+            </remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.Dispose">
+            <summary>
+            Forces the release of all resources used by this <b>Upload</b> object
+            : Deletes temporary files held by the <b>Upload</b> object, 
+            disposes a collection of <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> objects, closes <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> streams 
+            created by the <see cref="P:ElementIT.PowUpload.UploadedFile.InputStream">InputStream</see> property. 
+            </summary>
+            <remarks>
+            You aren't obliged to call this method. NET framework calls it by the 
+            <see cref="T:System.GC">Garbage Collector</see> once the <b>Upload</b> object goes out of scope. 
+            Do call this method to immediatly release all resources occupied by the last upload.
+            </remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.Upload.Finalize">
+            <summary>
+            Executes own <see cref="M:ElementIT.PowUpload.Upload.Dispose">Dispose()</see> method to free 
+            resources and perform other cleanup operations before 
+            the <see cref="T:System.Object">Object</see> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="P:ElementIT.PowUpload.Upload.Files">
+            <summary>
+            Gets the collection of client-uploaded files.
+            </summary>
+            <value>An <see cref="T:ElementIT.PowUpload.UploadedFileCollection">UploadedFileCollection</see> object 
+            representing a collection of client-uploaded files.</value>
+            <seealso cref="T:ElementIT.PowUpload.UploadedFileCollection">UploadedFileCollection class</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.Upload.LastError">
+            <summary>
+            Gets the last <see cref="T:System.Exception">Exception</see> occurred during the upload process. 
+            </summary>
+            <value>The <see cref="T:System.Exception">Exception</see> object that 
+            represents the last occurred error.</value>
+            <remarks>
+            Errors occurred in processing the files uploaded willn't be returned by this property.
+            This property is useful to determine whether the files was uploaded 
+            successfully or an error occurred. The property is <b>null</b> if the 
+            upload completed succesfully. 
+            </remarks>
+            <seealso cref="T:System.Exception">Exception class</seealso>
+        </member>
+        <member name="T:ElementIT.PowUpload.UploadedFile">
+            <summary>
+            Provides a way to access individual files that have been uploaded by a client. 
+            </summary>
+            <remarks>The <see cref="T:ElementIT.PowUpload.UploadedFileCollection">UploadedFileCollection</see> class provides access to all the files uploaded 
+            from a client as a file collection. <b>UploadedFile</b> provides properties 
+            and methods to get information on an individual file and to read and save the 
+            file. Files are uploaded in <c>MIME multipart/form-data format</c> and are stored in 
+            temp folder until explicitly moved to needed folder or deleted by <see cref="M:ElementIT.PowUpload.UploadedFile.Finalize">Destructor</see> or <see cref="M:ElementIT.PowUpload.UploadedFile.Dispose">Dispose</see> method.
+            <para>You cannot create an <b>UploadedFile</b> object 
+            directly. You must obtain it by referencing an item within the 
+            <see cref="P:ElementIT.PowUpload.Upload.Files">Files</see> property of an <see cref="T:ElementIT.PowUpload.Upload">Upload</see> object.</para></remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.CloseInputStream">
+            <summary>
+            Closes the stream created by the <see cref="P:ElementIT.PowUpload.UploadedFile.InputStream">InputStream</see> property and 
+            releases all resources (such as file handles) associated with the stream.
+            </summary>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.InputStream">InputStream property</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String,System.Boolean)">
+            <summary>
+             Copies an uploaded file to a new file. Overwriting a file of the same name is allowed.
+            </summary>
+            <param name="filename">The name of the destination file. This cannot be a directory.</param>
+            <param name="overwrite"><b>true</b> if the destination file can be overwritten; otherwise, <b>false</b>.</param>
+            <remarks>Use an absolute path at the filename argument. 
+            To get the physical path that corresponds to the Web application virtual folder use 
+             <see cref="M:System.Web.HttpServerUtility.MapPath(System.String)">Server.Mappath(“”)</see>.
+            <para>This method makes a new copy of the uploaded file. 
+            If you wish to make just a single copy of the file use 
+            the <see cref="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String,System.Boolean)">SaveAs</see> method. 
+            It moves the file therefore it works faster.</para></remarks>
+            <seealso cref="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String,System.Boolean)">SaveAs method</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String)">
+            <summary>
+             Copies an uploaded file to a new file. Overwriting a file of the same name is not allowed.
+            </summary>
+            <param name="filename">The name of the destination file. This cannot be a directory.</param>
+            <remarks>Use an absolute path at the filename argument. 
+            To get the physical path that corresponds to the Web application virtual folder use 
+             <see cref="M:System.Web.HttpServerUtility.MapPath(System.String)">Server.Mappath(“”)</see>.
+            <para>This method makes a new copy of the uploaded file. 
+            If you wish to make just a single copy of the file use 
+            the <see cref="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String,System.Boolean)">SaveAs</see> method. 
+            It moves the file therefore it works faster.</para></remarks> 
+            <seealso cref="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String,System.Boolean)">SaveAs method</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String,System.Boolean)">
+            <overloads>
+            <summary>
+             Moves an uploaded file to a new location, providing the option to specify file name.
+            </summary>
+            </overloads>
+            <summary>
+             Moves an uploaded file to a new location, providing the option to specify file name. Overwriting a file of the same name is allowed.
+            </summary>
+            <param name="filename">The name of the destination file. This cannot be a directory.</param>
+            <param name="overwrite"><b>true</b> if the destination file can be overwritten; otherwise, <b>false</b>.</param>
+            <remarks>Use an absolute path at the filename argument. 
+            To get the physical path that corresponds to the Web application virtual folder use 
+             <see cref="M:System.Web.HttpServerUtility.MapPath(System.String)">Server.Mappath(“”)</see>.  
+            <para>This method <b>moves</b> the file uploaded from the temporary folder to the 
+            specified location. So you shouldn't run this method twice. 
+            Use the <see cref="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String,System.Boolean)">CopyTo()</see> method if you wish to make multiple copies
+            of the same file.</para></remarks>  
+            <seealso cref="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String,System.Boolean)">CopyTo method</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.SaveAs(System.String)">
+            <summary>
+             Moves an uploaded file to a new location, providing the option to specify file name. Overwriting a file of the same name is not allowed.
+            </summary>
+            <param name="filename">The name of the destination file. This cannot be a directory.</param>
+            <remarks>Use an absolute path at the filename argument. 
+            To get the physical path that corresponds to the Web application virtual folder use 
+             <see cref="M:System.Web.HttpServerUtility.MapPath(System.String)">Server.Mappath(“”)</see>.  
+            <para>This method <b>moves</b> the file uploaded from the temporary folder to the 
+            specified location. So you shouldn't run this method twice. 
+            Use the <see cref="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String,System.Boolean)">CopyTo()</see> method if you wish to make multiple copies
+            of the same file.</para></remarks>
+            <seealso cref="M:ElementIT.PowUpload.UploadedFile.CopyTo(System.String,System.Boolean)">CopyTo method</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.GetSafeName(System.String)">
+            <summary>
+             Returns the safe file name and extension of the specified path string.
+            </summary>
+            <param name="filepath">The path string from which to obtain the file name and extension.</param>
+            <returns>A <see cref="T:System.String">String</see> consisting of the characters after the 
+            last directory character in file path.</returns>
+            <remarks>All characters that are illegal in file names on Windows 
+             and not safe relative path substrings like "\\", "..\" are deleted.
+            <br/>Use only this method to get a safe file name to save the file
+            on the target machine</remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.SafeFileName">SafeFileName property</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.Dispose">
+            <summary>
+            Forces the release of all resources used by this <b>UploadedFile</b> object
+            : Deletes temporary file held by the object, closes stream 
+            created by the <see cref="P:ElementIT.PowUpload.UploadedFile.InputStream">InputStream</see> property 
+            </summary>
+            <remarks>
+            You aren't obliged to call this method. NET framework calls it by the 
+            <see cref="T:System.GC">Garbage Collector</see> once the <b>UploadedFile</b> object goes out of scope. 
+            Do call this method to immediatly release all resources occupied by the object.
+            </remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFile.Finalize">
+            <summary>
+            Executes own <see cref="M:ElementIT.PowUpload.UploadedFile.Dispose">Dispose()</see> method to free 
+            resources and perform other cleanup operations before 
+            the <see cref="T:System.Object">Object</see> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.ContentLength">
+            <summary>Gets the size in bytes of an uploaded file.</summary>
+            <value>The length of the file.</value>
+            <remarks>Returns <b>zero</b> if the file has no content or a user didn't selected
+            a file to upload in the Form. To determine whether a file was selected or not
+            use the <see cref="P:ElementIT.PowUpload.UploadedFile.FileName">FileName</see> property 
+            (an <b>empty</b> string indicates the user didn't selected a file). 
+            	</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.ContentType">
+            <summary>Gets the MIME content type of a file sent by a client.</summary>
+            <value>The MIME content type of the uploaded file.</value>
+            <remarks>For the files of the same type the MIME content type may be different
+             depending on the browser used by a client. Be careful when using this property
+             to define the type of the file. 
+            	</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.FieldName">
+            <summary>Gets the field name of the file uploaded.</summary>
+            <value>The field name of the file uploaded.</value>
+            <remarks><b>Field name</b> is a string corresponding to the NAME attribute of 
+             an <c>&lt;INPUT TYPE="FILE"&gt;</c> item of the upload Form.
+            	</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.TempFileName">
+            <summary>Gets the path to the temporary file associated with the file uploaded.</summary>
+            <value>The path to the temporary file.</value>
+            <remarks>A temporary file is used to store the content of the file uploaded. 
+            The temporary file is the same as the target file except for it's name. 
+            <para>To store file on server hard disk is better than loading it into memory as 
+            the built-in ASP.NET upload support does.</para> 
+            <para>The <see cref="M:ElementIT.PowUpload.UploadedFile.Finalize">Destructor</see> or 
+            <see cref="M:ElementIT.PowUpload.UploadedFile.Dispose">Dispose</see> method deletes the temporary file.</para>
+            	</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.ClientFilePath">
+            <summary>Gets full name of the file on the client's computer.</summary>
+            <value>The name of the client's file.</value>
+            <remarks>
+            Empty string indicates the user didn't selected a file.
+            <para>Depending on the Operating System and Browser the client use this name 
+            may contain characters such as question marks and slashes which are 
+            illegal in file names on Windows. Be carefull using this file name to save the file
+            on the target machine as the name may contain unsafe relative path 
+            substrings like "\\", "..\" or a platform-specific 
+            characters that cannot be specified in path like
+            quote ("), less than (&lt;), greater than (&gt;), pipe (|), backspace (\b)!</para> 
+            <para>Use the <see cref="P:ElementIT.PowUpload.UploadedFile.SafeFileName">SafeFileName</see> property to get a safe file name.</para></remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.SafeFileName">SafeFileName property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.Extension">
+            <summary>Gets the file name extension (including the ".")</summary>
+            <value>A String containing the extension of the file.</value>
+            <remarks>Return value contains the extension of the specified path (including the "."). 
+            If the file was not selected by the user or the path have no extension, 
+            the value is an <b>empty</b> string.
+            	</remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.SafeFileName">SafeFileName property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.ImageWidth">
+            <summary>Gets the width of the image in pixels if the file uploaded is an image.</summary>
+            <value>The width of the image in pixels.</value>
+            <remarks>Returns <b>0</b> if the file uploaded isn't an image.  
+            </remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.IsImage">IsImage property</seealso>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.ImageHeight">ImageHeight property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.ImageHeight">
+            <summary>Gets the height of the image in pixels if the file uploaded is an image.</summary>
+            <value>The height of the image in pixels.</value>
+            <remarks>Returns <b>0</b> if the file uploaded isn't an image. 
+            	</remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.IsImage">IsImage property</seealso>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.ImageWidth">ImageWidth property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.IsImage">
+            <summary>
+            Gets a value that indicates whether the uploaded file is an image or not.
+            </summary>
+            <value><b>true</b> if the uploaded file has a valid image format and 
+            if GDI+ supports the pixel format of the file; otherwise, <b>false</b>.</value>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.ImageHeight">ImageHeight property</seealso>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.ImageWidth">ImageWidth property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.FileName">
+            <summary>Gets full name of the file on the client's computer.</summary>
+            <value>The name of the client's file.</value>
+            <remarks>Returns a value the same as the 
+            <see cref="P:ElementIT.PowUpload.UploadedFile.ClientFilePath">ClientFilePath</see> property.</remarks>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.ClientFilePath">ClientFilePath property</seealso>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.SafeFileName">SafeFileName property</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.SafeFileName">
+            <summary>Gets a safe file name with an extension.</summary>
+            <value>A <see cref="T:System.String">String</see> consisting of the characters after the 
+            last directory character in file path.</value>
+            <remarks>All characters that are illegal in file names on Windows 
+             and not safe relative path substrings like "\\", "..\" are deleted.
+            <br/>Use only this property to get a safe file name to save the file
+            on the target machine</remarks>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFile.InputStream">
+            <summary>
+            Gets a <see cref="T:System.IO.Stream">Stream</see> object which points to an 
+            uploaded file in a temporary folder to prepare for reading the content of the file.
+            </summary>
+            <value>A <see cref="T:System.IO.Stream">Stream</see> pointing to an uploaded file.</value>
+            <seealso cref="P:ElementIT.PowUpload.UploadedFile.TempFileName">TempFileName property</seealso>
+        </member>
+        <member name="T:ElementIT.PowUpload.UploadedFileCollection">
+             <summary>
+             Provides access to and organizes files uploaded by a client. 
+             </summary>
+             <remarks> 
+             <para>You cannot create an <b>UploadedFileCollection</b> object directly. 
+             You must obtain it from the <see cref="P:ElementIT.PowUpload.Upload.Files">Files</see> property of an <see cref="T:ElementIT.PowUpload.Upload">Upload</see> object.</para></remarks>
+            <seealso cref="P:ElementIT.PowUpload.Upload.Files">Upload.Files property</seealso>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFileCollection.GetKey(System.Int32)">
+            <summary>Returns unique key of the file with the specified numerical index in the collection.
+            </summary>
+            <param name="index">The index of the object name to be returned.</param>
+            <value>The field name of the <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> member specified by index.</value>
+            <remarks>This method is usefull to determine the field name of the file
+            that was uploaded the first (i.e. with index equals to "0"), etc.
+            </remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFileCollection.Dispose">
+            <summary>
+            Forces the release of all resources used by objects in <b>UploadedFileCollection</b>
+            : Deletes temporary files held by the objects in <b>UploadedFileCollection</b>, closes <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> streams 
+            created by the <see cref="P:ElementIT.PowUpload.UploadedFile.InputStream">InputStream</see> property. 
+            </summary>
+            <remarks>
+            You aren't obliged to call this method. NET framework calls it by the 
+            <see cref="T:System.GC">Garbage Collector</see> once the <b>UploadedFileCollection</b> object goes out of scope. 
+            Do call this method to immediatly release all resources occupied by <b>UploadedFileCollection</b>.
+            </remarks>
+        </member>
+        <member name="M:ElementIT.PowUpload.UploadedFileCollection.Finalize">
+            <summary>
+            Executes own <see cref="M:ElementIT.PowUpload.UploadedFileCollection.Dispose">Dispose()</see> method to free 
+            resources and perform other cleanup operations before 
+            the <see cref="T:System.Object">Object</see> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFileCollection.Item(System.String)">
+             <summary>
+             Gets an individual <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> object from the file 
+             collection by the specified field name.
+             </summary>
+            <param name="fieldName">The field name of the file corresponding to the NAME attribute of 
+             an <c>&lt;INPUT TYPE="FILE"&gt;</c> item of your upload Form.</param>
+            <value>The <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> specified by field name.</value>
+            <seealso cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile class</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFileCollection.Item(System.Int32)">
+             <summary>
+             Gets an individual <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> object from the 
+             file collection by the specified index.
+             </summary>
+            <param name="index">The index of the item to get from the file collection.</param>
+            <value>The <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> specified by index.</value>
+            <seealso cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile class</seealso>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFileCollection.AllKeys">
+            <summary>
+            Gets a string array containing the keys (field names) of all members in the file collection.
+            </summary>
+            <value>An array of field names of uploaded files.</value>
+        </member>
+        <member name="P:ElementIT.PowUpload.UploadedFileCollection.Count">
+            <summary>
+            Gets the number of <see cref="T:ElementIT.PowUpload.UploadedFile">UploadedFile</see> objects contained within the <b>UploadedFileCollection</b> instance, 
+            which corresponds directly to the number of files found within the HTTP POST request.
+            </summary>
+            <value>The number of objects contained in the <b>UploadedFileCollection</b> instance.</value>
+        </member>
+        <member name="T:ElementIT.PowUpload.NamespaceDoc">
+            <summary>PowUpload is an <see href="http://www.asp.net">ASP.NET</see> control that enables an ASP.NET 
+            application to capture and save files uploaded to the web 
+            server by a browser. PowUpload is fully compatible with 
+            the standard files upload protocol defined in <see href="http://rfc.net/rfc1867.html">RFC1867</see> for 
+            the HTML POST Form with the &lt;INPUT TYPE=FILE&gt; tags.
+            <br/><br/>PowUpload handles and stores the contents of the POST 
+            request to a file on the server hard disk rather than 
+            loading it into memory as the <see cref="P:System.Web.HttpRequest.Files">built-in</see> ASP.NET upload support 
+            does. PowUpload provides rich server-side progress indicator 
+            that lets users to monitor the progress of their uploads.
+            </summary>
+        </member>
+    </members>
+</doc>
