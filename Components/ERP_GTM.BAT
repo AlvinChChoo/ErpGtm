@@ -1,0 +1,1 @@
+C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\vbc /t:library /out:..\bin\ERP_GTM.dll /r:System.dll /r:System.Web.dll /r:System.Xml.dll /r:System.Data.dll ERP_GTM.vb

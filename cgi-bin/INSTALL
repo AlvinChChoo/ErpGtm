@@ -1,0 +1,22 @@
+XUpload script installation (version 2.6 18-Jan-2007)
+
+1) Copy all files except "upload_form.html" to your cgi-bin folder (or folder where perl scripts running)
+   Copy "upload_form.html" into your htdocs folder.
+
+2) Create 2 new folders in cgi-bin for temp files and for finished uploads. 
+   CHMOD them to 777.
+   .cgi files should be CHMODed to 755
+   cgi-bin folder should be CHMODed 755 too
+
+3) Modify XUploadConfig.pm file with your server details.
+
+4) Edit upload_form.html: change URL-TO-SCRIPT to your scripts folder URL in 2 places.
+
+That's all! Now you can go to www.yoursite.com/.../upload_form.html and start 
+uploading files with XUpload.
+
+
+Good luck!
+
+info@sibsoft.net
+www.sibsoft.net

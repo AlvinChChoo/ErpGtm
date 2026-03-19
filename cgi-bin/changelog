@@ -1,0 +1,47 @@
+2.6 (2007-01-18)
+ + Better "Transfer complete!" incorrect situations handling
+ + CHMODing files after upload
+ + Better windows support
+ + Added mod_gzip/mod_security fixes to .htaccess to avoid caching
+ + Added 'No files to upload' JS validation
+ + Sending original/renamed filename in POST
+ + Stopping upload from pop-up when filesize exceeded
+ + Showing alert message when filesize exceeded and no pop-up
+ + Code cleanup
+ + Improved old perl versions compatibility
+
+2.5 (2006-02-26)
+ + Inline mode (no need to open pop-up anymore)
+ + 'Transparent' for PHP users
+ + Garbage collector if upload stopped by user/connection killed
+ + "Immediate" files copy when uploaded (saves server CPU/RAM a lot)
+ + Total less CPU/RAM requirements
+ + Number of files uploaded indication
+ + Template themes
+ + External CSS styles
+ + JS file extension validation
+ * "+1 Upload Slot" feature support for Firefox
+ * Inline mode support for Opera/Firefox
+ * Calculating % completed on client side, thus less bandwidth usage
+ * Pure perl temp files cleaning (cure for some hostings with perl limits)
+
+1.4 (2005-05-05)
+ * Added max_name_length and copy_mode config options.
+ * Showing files copying logs.
+
+1.3 (2005-04-28)
+ * Added 2 new config options: block_size and upload_delay, that helps to manually tune upload speed/server load
+ + Fixed bug when displaying wrong "Fail upload" message (thanks to yeknom)
+
+1.2 (2005-04-20)
+ * Added "Maximum upload size exceeded" error handling before full content downloading
+ * Added "Copying files" info after Upload complete
+ + Decreased bandwidth while getting upload status, increased update speed
+ + Slight code optimizations
+
+1.1 (2005-03-23)
+ * Errors displays correctly in browser now
+ + Added Max Total upload limit to prevent server attacks
+ + Changed SeedID generation in HTML form (fixes problems when resubmitting failed upload)
+ + Changed 'Upload Failed' time to 15 seconds
+ + Tiny code optimization/reorganization

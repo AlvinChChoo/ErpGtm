@@ -1,0 +1,1 @@
+C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\vbc /t:library /out:..\bin\StoreVB.dll /r:System.dll /r:System.Web.dll /r:System.Xml.dll /r:System.Data.dll CustomersDB.vb ProductsDB.vb OrdersDB.vb ReviewsDB.vb ShoppingCartDB.vb
